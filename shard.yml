@@ -1,0 +1,17 @@
+name: rapid_mutation
+version: 0.1.0
+
+authors:
+  - Bar Hofesh <bar.hofesh@gmail.com>
+
+targets:
+  rapid_mutation:
+    main: src/rapid_mutation.cr
+
+dependencies:
+  crsfml:
+    github: bararchy/crsfml
+    branch: master
+crystal: 0.24.2
+
+license: MIT

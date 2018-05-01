@@ -1,0 +1,6 @@
+version: 1.0
+shards:
+  crsfml:
+    github: bararchy/crsfml
+    commit: 1a89a0629eb5a494603fa8cdb494ba8334428b78
+
