@@ -10,14 +10,15 @@ module RapidMutation
         @npcs << npc
       end
       @player = Player.new("resources/pingu.png")
-      @background = World::Background.new("resources/grass/tilable-IMG_0044-grey.png")
+      @world = World.new(1024, 1024)
       @main_view = @window.default_view.as(SF::View)
       @main_view.center = @player.position
     end
 
     def draw
       @window.clear SF::Color.new(0, 0, 0)
-      @window.draw @background.sprite
+      x, y = @player.position
+      @window.draw @world.get_background_at(x.round.to_i32, y.round.to_i32)
       @main_view.center = @player.position
       @window.draw @player.sprite
       npc_random_move
