@@ -14,7 +14,7 @@ module RapidMutation
       @sprite.position
     end
 
-    def position(pos : SF::Vector2)
+    def position=(pos : SF::Vector2)
       @sprite.position = pos
     end
   end

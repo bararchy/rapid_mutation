@@ -23,10 +23,12 @@ module RapidMutation
       #  [background_desert, background_desert],
       #  [background_desert, background_desert],
       # ]
-      @world_size_y.times do
+      @world_size_y.times do |x|
         layer = Array(Background).new
-        @world_size_x.times do
-          layer << Background.new(@texture)
+        @world_size_x.times do |y|
+          b = Background.new(@texture)
+          b.position = SF.vector2(x, y)
+          layer << b
         end
         world_grid << layer
       end
