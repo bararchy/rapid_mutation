@@ -7,12 +7,13 @@ The game is under development.
 ## Installation
 1. [install Crystal](https://crystal-lang.org/docs/installation/)  
 2. [install SFML](https://www.sfml-dev.org/download.php)  
-2. clone the repo  
- 
-## Usage
+3. clone the repo  
+4. `cd rapid_mutation`
+5. `shards update`    
 
-1. `cd rapid_mutation`  
-2. `./test.sh` 
+## Usage
+  
+1. `./test.sh` 
 
 ## Development
 
