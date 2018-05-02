@@ -19,6 +19,14 @@ module RapidMutation
       @sprite.position = SF.vector2(250, 300)
     end
 
+    def position
+      @sprite.position
+    end
+
+    def position(pos : SF::Vector2)
+      @sprite.position = pos
+    end
+
     def move(direction : Symbol)
       case direction
       when :up
