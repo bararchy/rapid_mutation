@@ -1,22 +1,26 @@
 # rapid_mutation
 
-TODO: Write a description here
+Rapid Mutation is a game about....mutation :)  
+You are an organism, bearly out of the premedorial soup and now you need to survive and evolve, or geat eaten.  
+The game is under development.  
 
 ## Installation
-
-TODO: Write installation instructions here
-
+1. [install Crystal](https://crystal-lang.org/docs/installation/)  
+2. [install SFML](https://www.sfml-dev.org/download.php)  
+2. clone the repo  
+ 
 ## Usage
 
-TODO: Write usage instructions here
+1. `cd rapid_mutation`  
+2. `./test.sh` 
 
 ## Development
 
-TODO: Write development instructions here
+Too much more to do right now.  
 
 ## Contributing
 
-1. Fork it ( https://github.com/[your-github-name]/rapid_mutation/fork )
+1. Fork it ( https://github.com/bararchy/rapid_mutation/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
@@ -24,4 +28,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [[your-github-name]](https://github.com/[your-github-name]) Bar Hofesh - creator, maintainer
+- [bararchy](https://github.com/bararchy) Bar Hofesh - creator, maintainer
