@@ -10,16 +10,15 @@ module RapidMutation
         @npcs << npc
       end
       @player = Player.new("resources/pingu.png")
-      @world = World.new(1024, 1024)
+      @level = Level.new(Background::Style::Forest, 1024 * 10, 1024 * 10)
       @main_view = @window.default_view.as(SF::View)
       @main_view.center = @player.position
     end
 
     def draw
       @window.clear SF::Color.new(0, 0, 0)
-      x, y = @player.position
-      @window.draw @world.get_background_at(x.round.to_i32, y.round.to_i32)
       @main_view.center = @player.position
+      @window.draw @level.bg.sprite
       @window.draw @player.sprite
       npc_random_move
       @npcs.each { |n| @window.draw n.sprite }
@@ -39,7 +38,7 @@ module RapidMutation
         elsif SF::Keyboard.key_pressed?(SF::Keyboard::D)
           @player.move(:right)
         end
-        draw
+        Fiber.yield
       end
       while SF::Keyboard.key_pressed?(SF::Keyboard::A)
         @player.move(:left)
@@ -48,7 +47,7 @@ module RapidMutation
         elsif SF::Keyboard.key_pressed?(SF::Keyboard::W)
           @player.move(:up)
         end
-        draw
+        Fiber.yield
       end
       while SF::Keyboard.key_pressed?(SF::Keyboard::S)
         @player.move(:down)
@@ -57,7 +56,7 @@ module RapidMutation
         elsif SF::Keyboard.key_pressed?(SF::Keyboard::D)
           @player.move(:right)
         end
-        draw
+        Fiber.yield
       end
       while SF::Keyboard.key_pressed?(SF::Keyboard::D)
         @player.move(:right)
@@ -66,15 +65,22 @@ module RapidMutation
         elsif SF::Keyboard.key_pressed?(SF::Keyboard::W)
           @player.move(:up)
         end
+        Fiber.yield
+      end
+    end
+
+    def draw_loop
+      loop do
         draw
+        Fiber.yield
+        break unless @window.open?
       end
     end
 
     def run
+      spawn draw_loop
       while @window.open?
-        draw
         while event = @window.poll_event
-          draw
           case event
           when SF::Event::Closed
             @window.close
@@ -94,7 +100,9 @@ module RapidMutation
               @window.close
             end
           end
+          Fiber.yield
         end
+        Fiber.yield
       end
     end
   end
