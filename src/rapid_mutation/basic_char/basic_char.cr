@@ -2,14 +2,14 @@ require "../organism/organism.cr"
 
 module RapidMutation
   class BasicChar < Organism
-    getter :sprite, :mutation_counter
+    getter :sprite, :mutation_counter, :attributes
     property :speed
 
     def initialize(texture_path : String, @speed = 1)
       @texture = SF::Texture.from_file(texture_path)
       @sprite = SF::Sprite.new(@texture)
       @mutation_counter = 0_i64
-      @attributes = BasicAttributes.new
+      @attributes = Array(Attribute).new
       reset_sprite_position
     end
 
