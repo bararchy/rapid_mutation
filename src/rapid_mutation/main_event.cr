@@ -10,22 +10,25 @@ module RapidMutation
         @npcs << npc
       end
       @player = Player.new("resources/pingu.png")
+      @side_bar = SideBar.new
       @level = Level.new(Background::Style::Forest, 1024 * 1024, 1024 * 1024)
       @main_view = @window.default_view.as(SF::View)
+      @main_view.viewport = SF.float_rect(0, 0, 0.85, 1)
       @stats_view = SF::View.new
-      @stats_view.viewport = SF.float_rect(0.75, 0, 0.25, 0.25)
+      @stats_view.viewport = SF.float_rect(0.85, 0, 0.25, 1)
       @main_view.center = @player.position
     end
 
     def draw
       @window.clear SF::Color.new(0, 0, 0)
       @main_view.center = @player.position
-      @window.view = @window.default_view
+      @window.view = @main_view
       @window.draw @level.bg.sprite
       @window.draw @player.sprite
       npc_random_move
       @npcs.each { |n| @window.draw n.sprite }
       @window.view = @stats_view
+      @window.draw @side_bar.sprite
       @window.draw @player.stats
       @window.display
     end
@@ -98,8 +101,6 @@ module RapidMutation
               movment
             when .d?
               movment
-            when .space?
-              @player.speed += 1
             when .escape?
               @window.close
             end
