@@ -16,10 +16,11 @@ module RapidMutation
     end
 
     def inspect
+      categories = ["\n", @category.size, @category.strength, @category.durability, @category.efficiency].compact
       <<-EOF
       name: #{@name}
       familiy: #{@familiy}
-      category: #{@category.inspect}
+      categories: #{categories.join("\n")}
       EOF
     end
 

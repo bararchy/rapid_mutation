@@ -6,10 +6,10 @@ module RapidMutation
       @window.vertical_sync_enabled = true
       @npcs = Array(NPC::Generic).new
       5.times do
-        npc = NPC::Generic.new("resources/pingu.png")
+        npc = NPC::Generic.new(["resources/npc/prey_slug1.png"])
         @npcs << npc
       end
-      @player = Player.new("resources/pingu.png")
+      @player = Player.new(Dir.glob("resources/basic_form/*"))
       @side_bar = SideBar.new
       @level = Level.new(Background::Style::Forest, 1024 * 1024, 1024 * 1024)
       @main_view = @window.default_view.as(SF::View)

@@ -3,13 +3,17 @@ require "./basic_char/basic_char.cr"
 module RapidMutation
   class Player < BasicChar
     def stats : SF::Text
+      a = @attributes.map do |attr|
+        "\n~~~~~~~~\n" + attr.inspect
+      end
+
       headline = get_text
       headline.string = <<-EOF
       ~~STATS~~
       Health: #{@health}
       Mutation Cycles: #{@mutation_counter}
       ~~Attributes~~
-      #{@attributes.map { |a| a.inspect }.join("\n")}
+      #{a.join("\n")}
       EOF
 
       headline

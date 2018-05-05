@@ -7,17 +7,23 @@ module RapidMutation
       Mountains
     end
 
-    getter :texture, :sprite
+    getter :sprite
+
+    @sprite : SF::RectangleShape
 
     def initialize(style : Background::Style, level_size_x : Int32, level_size_y : Int32)
       case style
       when Style::Forest
-        @texture = SF::Texture.from_file("resources/grass/tilable-IMG_0044-grey.png", SF.int_rect(-level_size_x, -level_size_y, level_size_x, level_size_y))
+        rectangle = SF::RectangleShape.new(SF.vector2(level_size_x, level_size_y))
+
+        texture = SF::Texture.from_file("resources/grass/tilable-IMG_0044-grey.png")
+        texture.repeated = true
+        rectangle.set_texture(texture, reset_rect: false)
       else
         raise "Style Not Supported"
       end
-      @texture.repeated = true
-      @sprite = SF::Sprite.new(@texture)
+
+      @sprite = rectangle
     end
 
     def position
