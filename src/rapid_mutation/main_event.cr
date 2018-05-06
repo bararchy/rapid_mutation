@@ -2,7 +2,7 @@ module RapidMutation
   class MainEvent
     def initialize
       mode = SF::VideoMode.new(1920, 1080)
-      @window = SF::RenderWindow.new(mode, "Rapid Mutation", SF::Style::Fullscreen)
+      @window = SF::RenderWindow.new(mode, "Rapid Mutation") # , SF::Style::Fullscreen)
       @window.vertical_sync_enabled = true
       @npcs = Array(NPC::Generic).new
       5.times do
@@ -11,7 +11,7 @@ module RapidMutation
       end
       @player = Player.new(Dir.glob("resources/basic_form/*"))
       @side_bar = SideBar.new
-      @level = Level.new(Background::Style::Forest, 1024 * 1024, 1024 * 1024)
+      @level = Level.new(Background::Style::Forest, 1024, 1024)
       @main_view = @window.default_view.as(SF::View)
       @main_view.viewport = SF.float_rect(0, 0, 0.85, 1)
       @stats_view = SF::View.new
