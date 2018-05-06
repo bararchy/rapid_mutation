@@ -2,7 +2,7 @@ module RapidMutation
   class MainEvent
     def initialize
       mode = SF::VideoMode.new(1920, 1080)
-      @window = SF::RenderWindow.new(mode, "Rapid Mutation")
+      @window = SF::RenderWindow.new(mode, "Rapid Mutation", SF::Style::Fullscreen)
       @window.vertical_sync_enabled = true
       @npcs = Array(NPC::Generic).new
       5.times do
